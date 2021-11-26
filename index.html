@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adam - Eva</title>
+</head>
+
+<body>
+    <script>
+        var Apple = function () {
+            this.setPiece = function (piece) {
+                this.piece = piece;
+            };
+            this.getPiece = function () {
+                return this.piece;
+            };
+            this.decreasePiece = function () {
+                if (this.piece > 0)
+                    return this.piece --;
+                else return this.piece = 0;
+            };
+        };
+
+        var Human = function (name, say, sex, weight, status) {
+            this.name = name;
+            this.say = say;
+            this.sex = sex;
+            this.weight = weight;
+            this.status = status;
+
+            this.getWeight = function () {
+                return this.weight;
+            };
+            this.setApple = function (apple) {
+                this.apple = apple;
+            };
+            this.getAppleCheck = function () {
+                return this.apple.getPiece();
+            };
+            this.bite = function () {
+                if (this.status) {
+                    this.weight++;
+                    document.write(this.name + this.say + '<br>');
+                }
+            };
+            this.oneBite = function () {
+                this.status = true;
+                return this.apple.decreasePiece();
+            };
+        };
+
+        var adam = new Human('Adam', ' nói: "Hello"', 'Male', 26,true);
+        var eva = new Human('Eva', ' nói: "Lô lô cc"', 'Femal', 23, true);
+        var apple = new Apple();
+        apple.setPiece(10);
+        adam.setApple(apple);
+        eva.setApple(apple);
+
+        for (var i = 0; i < 5; i++) {
+            adam.oneBite();
+            adam.bite();
+            document.write('Adam vì ăn táo nên cân nặng đã trở thành: ' + adam.getWeight() + '-----' + 'Quả táo còn lại: ' + adam.getAppleCheck() + ' miếng<br>');
+            eva.oneBite();
+            eva.bite();
+            document.write('Eva vì ăn táo nên đã bị béo, số cân của Eva là: ' + eva.getWeight() + '-----' + 'Quả táo còn lại: ' + eva.getAppleCheck() + ' miếng<br>');
+
+        }
+    </script>
+</body>
+
+</html>
